@@ -13,7 +13,7 @@ namespace Labb3_Entity
            
 
             Console.WriteLine("Välj ett alternativ:");
-            Console.WriteLine("1. Visa alla anställda");
+            Console.WriteLine("1. Visa alla anställda ");
             Console.WriteLine("2. Visa anställda inom en kategori");
             Console.WriteLine("3. Visa alla elever");
             Console.WriteLine("4. Visa alla klasser som finns");
@@ -21,7 +21,9 @@ namespace Labb3_Entity
             Console.WriteLine("6. Visa alla kurser med snittbetyg, lägst samt högst betyg ");
             Console.WriteLine("7. Lägg till elever");
             Console.WriteLine("8. Lägg till personal");
-            Console.WriteLine("9. Avsluta programmet");
+            Console.WriteLine("9. Lägga till betyg");
+            Console.WriteLine("10. Visa alla elever ID via Stored Procedure");
+            Console.WriteLine("11. Avsluta programmet");
 
             while (true)
             {
@@ -36,18 +38,42 @@ namespace Labb3_Entity
 
                 switch (choice)
             {
-                case 1:
-                        schoolContext.ShowAllEmployees();
-                        
-                        
 
+
+                case 1:
+                        Console.WriteLine("1. Visa befattningen, anställningsdatum och lön");
+                        Console.WriteLine("2. Visa Hur många antal lärare jobbar på olika avdelningar");
+                        Console.WriteLine("3. Visa Hur mycket är medellönen för de olika anställda ");
+                        int userInput = int.Parse(Console.ReadLine());
+
+                        if (userInput == 1)
+                        {
+                            schoolContext.ShowAllEmployees();
+                        }
+
+                        else if (userInput == 2)
+                        {
+                            schoolContext.CountTeachers();
+                        }
+
+                        else if (userInput == 3)
+                        {
+                            schoolContext.TeacherAverageSalary();
+                            schoolContext.AdminAverageSalary();
+                            schoolContext.PrincipalAverageSalary();
+                         
+                        }
+
+                        else
+                        {
+                            Console.WriteLine("Välj en giltig siffra");
+                        }
+                          
 
                         break;
                 case 2:
 
                     // Hämta anställda inom den angivna kategorin från databasen
-
-                    
 
 
                     Console.WriteLine("Ange kategori:");
@@ -148,12 +174,15 @@ namespace Labb3_Entity
                         schoolContext.AddEmployee();
                         break;
                     case 9:
+                        schoolContext.AddGrade();
+                        break;
+                    case 10:
+                        schoolContext.ShowStudentSP();
+                        break;
+                    case 11:
                         Console.WriteLine("Tack och hej");
                         return;
                     default:
-
-
-
 
                         Console.WriteLine("Ogiltigt val, testa igen");
                     break;

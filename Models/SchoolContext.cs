@@ -148,7 +148,7 @@ namespace Labb3_Entity.Models
 
             modelBuilder.Entity<StudentClass>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(sc => new { sc.FkStudentId, sc.FkClassId });
 
                 entity.ToTable("Student_Class");
 

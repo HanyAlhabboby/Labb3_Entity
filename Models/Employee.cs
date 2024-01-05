@@ -15,6 +15,10 @@ namespace Labb3_Entity.Models
         public string? LastName { get; set; }
         public int? FkTitelId { get; set; }
 
+        public int? Salary { get; set; }
+
+        public DateTime? WorkingDate { get; set; }
+
         public virtual Titel? FkTitel { get; set; }
         public virtual ICollection<Course> Courses { get; set; }
     }
